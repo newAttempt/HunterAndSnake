@@ -6,15 +6,17 @@
 //
 //
 
-#ifndef MenuScene_hpp
-#define MenuScene_hpp
+#ifndef GameScene_hpp
+#define GameScene_hpp
 #include "cocos2d.h"
 
-class MenuScene: public cocos2d::Scene
+class GameScene: public cocos2d::Scene
 {
 public:
-    CREATE_FUNC(MenuScene);
+    CREATE_FUNC(GameScene);
     virtual bool init();
+private:
+    void initItems();
 };
 
 

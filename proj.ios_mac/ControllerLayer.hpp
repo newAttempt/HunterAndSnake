@@ -18,10 +18,13 @@ public:
 private:
     void initListener();
     void initItems();
+    void initScheduler();
     
     cocos2d::EventListenerTouchOneByOne* listener;
     cocos2d::Sprite* button;
     cocos2d::Point originalTouchPosition;
+    cocos2d::Vec2 direction;
+    std::mutex mutex;
 };
 
 #endif /* Controller_hpp */

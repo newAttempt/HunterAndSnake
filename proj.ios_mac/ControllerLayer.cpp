@@ -32,7 +32,7 @@ void Controller::initListener()
     auto begin = [this] (Touch* t, Event* e)
     {
         GET_ORI_VIS;
-        if(t -> getLocation().x < visiableSize.width/2 + origin.x && t -> getLocation().x > origin.x + 10)
+        if(t -> getLocation().x < visiableSize.width/2 + origin.x && t -> getLocation().x > origin.x + 50)
         {
             button -> setPosition(t -> getLocation());
             originalTouchPosition . set(t -> getLocation());
@@ -47,6 +47,9 @@ void Controller::initListener()
         if(dis < 30)
         {
             button -> setPosition(t -> getLocation());
+            mutex.lock();
+            direction = Vec2(t -> getLocation().x - originalTouchPosition.x, t -> getLocation().x - originalTouchPosition.y);
+            mutex.unlock();
             return;
         }
         float X = abs(t -> getLocation().x - originalTouchPosition . x);

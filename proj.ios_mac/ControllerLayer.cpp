@@ -32,8 +32,10 @@ void Controller::initListener()
     auto begin = [this] (Touch* t, Event* e)
     {
         GET_ORI_VIS;
-        if(t -> getLocation().x < visiableSize.width/2 + origin.x && t -> getLocation().x > origin.x + 10)
+        if(t -> getLocation().x < visiableSize.width/2 + origin.x)
         {
+            if(originalTouchPosition.x !=0 || originalTouchPosition.y !=0)
+                return true;;
             button -> setPosition(t -> getLocation());
             originalTouchPosition . set(t -> getLocation());
             button -> setVisible(true);
@@ -47,6 +49,9 @@ void Controller::initListener()
         if(dis < 30)
         {
             button -> setPosition(t -> getLocation());
+            mutex.lock();
+            direction = Vec2(t -> getLocation().x - originalTouchPosition.x, t -> getLocation().y - originalTouchPosition.y);
+            mutex.unlock();
             return;
         }
         float X = abs(t -> getLocation().x - originalTouchPosition . x);
@@ -58,13 +63,20 @@ void Controller::initListener()
         if(t -> getLocation().y < originalTouchPosition . y)
             y *= -1;
         button -> setPosition(originalTouchPosition.x + x, originalTouchPosition . y + y);
+        
         mutex.lock();
         direction = Vec2(x, y);
         mutex.unlock();
     };
     auto ended = [this](Touch* t, Event* e)
     {
+        GET_ORI_VIS;
+        bool endedFromTheEdge = t -> getLocation().x < origin.x + 2 || t -> getLocation().y < origin.y + 2;
+        if(endedFromTheEdge)
+            return;
         button -> setVisible(false);
+        originalTouchPosition.x = 0;
+        originalTouchPosition.y = 0;
         mutex.lock();
         direction = Vec2(0, 0);
         mutex.unlock();

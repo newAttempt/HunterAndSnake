@@ -61,7 +61,6 @@ bool BackgroundLayer::move(Vec2 direction, unsigned times)
         currentPosition.add(direction*0.05);
         backgroundPicture -> setPosition(currentPosition);
     }
-    log("move!!!!!!!!!!\n\n\n\n\n");
     return true;
 }
 

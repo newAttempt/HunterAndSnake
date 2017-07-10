@@ -6,7 +6,9 @@
 //
 //
 
-#include "Controller.hpp"
+#include "ControllerLayer.hpp"
+#include "GameScene.hpp"
+#include "Movement.hpp"
 #include "cocos2d.h"
 #include "Defines.h"
 #include <math.h>
@@ -19,6 +21,7 @@ bool Controller::init()
         return false;
     initItems();
     initListener();
+    initScheduler();
     return true;
 }
 
@@ -55,11 +58,16 @@ void Controller::initListener()
         if(t -> getLocation().y < originalTouchPosition . y)
             y *= -1;
         button -> setPosition(originalTouchPosition.x + x, originalTouchPosition . y + y);
-        
+        mutex.lock();
+        direction = Vec2(x, y);
+        mutex.unlock();
     };
     auto ended = [this](Touch* t, Event* e)
     {
         button -> setVisible(false);
+        mutex.lock();
+        direction = Vec2(0, 0);
+        mutex.unlock();
     };
     
     listener -> onTouchBegan = begin;
@@ -72,8 +80,8 @@ void Controller::initListener()
 void Controller::initItems()
 {
     GET_ORI_VIS;
-    button = Sprite::create("res/controller.png");
-    button -> setPosition(SCR_CEN);
+    button = Sprite::create("res/Controller/centerButton.png");
+    button -> setPosition(SCREEN_CENTER);
     button -> setTag(1);
     button -> setVisible(false);
     button -> setScale(0.5);
@@ -81,5 +89,16 @@ void Controller::initItems()
 }
 
 
-
+void Controller::initScheduler()
+{
+    Director::getInstance()->getScheduler()->schedule([this](float){
+        mutex.lock();
+        if(direction.x != 0 && direction.y != 0)
+        {
+            auto parent = (GameScene*)this -> getParent();
+            Movement::move(direction, parent, 1);
+        }
+        mutex.unlock();
+    }, this, 0.01, kRepeatForever, 0, true, "checkMove");
+}
 

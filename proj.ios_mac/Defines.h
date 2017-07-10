@@ -12,6 +12,7 @@
 #define GET_ORI_VIS auto origin = Director::getInstance()->getVisibleOrigin();\
 auto visiableSize = Director::getInstance()->getVisibleSize()
 
-#define SCR_CEN origin.x + visiableSize.width/2, origin.y + visiableSize.height/2
+#define SCREEN_CENTER origin.x + visiableSize.width/2, origin.y + visiableSize.height/2
+#define BACKGROUND 0
 
 #endif /* Header_h */

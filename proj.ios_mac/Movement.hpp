@@ -12,7 +12,8 @@
 class Movement
 {
 public:
-    static void move(cocos2d::Vec2, cocos2d::Scene* gameScene, int times);
+    static void moveHunter(cocos2d::Vec2, cocos2d::Scene* gameScene, int times);
+    static void moveSnake(cocos2d::Vec2, cocos2d::Scene* gameScene, int times);
 };
 
 #endif /* Movement_hpp */

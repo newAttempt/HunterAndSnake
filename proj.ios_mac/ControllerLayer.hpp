@@ -19,7 +19,16 @@ private:
     void initListener();
     void initItems();
     void initScheduler();
+    void initTouchBeginForDirectionController();
+    void initTouchMovedForDirectionController();
+    void initTouchEndedForDirectionController();
+    void initScheduleToCheckTheMovementDirection();
     
+    
+    std::function<bool(cocos2d::Touch*, cocos2d::Event*)> begin;
+    std::function<void(cocos2d::Touch*, cocos2d::Event*)> moved;
+    std::function<void(cocos2d::Touch*, cocos2d::Event*)> ended;
+    std::function<void(float)> scheduleToCheckTheMovementDirection;
     cocos2d::EventListenerTouchOneByOne* listener;
     cocos2d::Sprite* button;
     cocos2d::Point originalTouchPosition;

@@ -19,4 +19,10 @@ auto visiableSize = Director::getInstance()->getVisibleSize()
 #define BACKGROUND_LAYER            0
 #define HUNTER_LAYER                1
 
+
+
+
+//The definations for sceneTypes
+#define HUNTER_SCENE_TYPE    0
+#define SNAKE_SCENE_TYPE     1
 #endif /* Header_h */

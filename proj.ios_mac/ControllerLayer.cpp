@@ -15,18 +15,17 @@
 USING_NS_CC;
 using namespace std;
 
-bool Controller::init()
+bool ControllerLayer::init()
 {
     if(!Layer::init())
         return false;
     initItems();
     initListener();
-    initScheduler();
     return true;
 }
 
 
-void Controller::initListener()
+void ControllerLayer::initListener()
 {
     initTouchBeginForDirectionController();
     initTouchEndedForDirectionController();
@@ -39,7 +38,7 @@ void Controller::initListener()
 }
 
 
-void Controller::initItems()
+void ControllerLayer::initItems()
 {
     GET_ORI_VIS;
     button = Sprite::create("res/Controller/centerButton.png");
@@ -51,14 +50,7 @@ void Controller::initItems()
 }
 
 
-void Controller::initScheduler()
-{
-    initScheduleToCheckTheMovementDirection();
-    Director::getInstance()->getScheduler()->schedule(scheduleToCheckTheMovementDirection, this, 0.01, kRepeatForever, 0, true, "checkDirection");
-}
-
-
-void Controller::initTouchBeginForDirectionController()
+void ControllerLayer::initTouchBeginForDirectionController()
 {
     begin = [this] (Touch* t, Event* e)
     {
@@ -77,7 +69,7 @@ void Controller::initTouchBeginForDirectionController()
 }
 
 
-void Controller::initTouchMovedForDirectionController()
+void ControllerLayer::initTouchMovedForDirectionController()
 {
     moved = [this](Touch* t, Event* e)
     {
@@ -107,7 +99,7 @@ void Controller::initTouchMovedForDirectionController()
 }
 
 
-void Controller::initTouchEndedForDirectionController()
+void ControllerLayer::initTouchEndedForDirectionController()
 {
     ended = [this](Touch* t, Event* e)
     {
@@ -125,18 +117,28 @@ void Controller::initTouchEndedForDirectionController()
 }
 
 
-void Controller::initScheduleToCheckTheMovementDirection()
+void ControllerLayer::initScheduleToCheckTheMovementDirectionForHunter()
 {
     scheduleToCheckTheMovementDirection = [this](float){
         mutex.lock();
         if(direction.x != 0 && direction.y != 0)
         {
             auto parent = (GameScene*)this -> getParent();
-            Movement::move(direction, parent, 1);
+            Movement::moveHunter(direction, parent, 1);
         }
         mutex.unlock();
     };
 }
 
-
-
+void ControllerLayer::initScheduleToCheckTheMovementDirectionForSnake()
+{
+    scheduleToCheckTheMovementDirection = [this](float){
+        mutex.lock();
+        if(direction.x != 0 && direction.y != 0)
+        {
+            auto parent = (GameScene*)this -> getParent();
+            Movement::moveSnake(direction, parent, 1);
+        }
+        mutex.unlock();
+    };
+}

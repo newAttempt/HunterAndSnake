@@ -18,6 +18,8 @@
 		3F2440BD1F13390F00F5C039 /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F2440BB1F13390F00F5C039 /* BackgroundLayer.cpp */; };
 		3F2440C01F13447400F5C039 /* Movement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F2440BE1F13447400F5C039 /* Movement.cpp */; };
 		3F8D80701F1454E100314C0C /* HunterLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D806E1F1454E100314C0C /* HunterLayer.cpp */; };
+		3F8D80741F146CCC00314C0C /* ControllerForHunter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D80721F146CCC00314C0C /* ControllerForHunter.cpp */; };
+		3F8D80771F146FB300314C0C /* ControllerForSnake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D80751F146FB300314C0C /* ControllerForSnake.cpp */; };
 		3FB94DB81F108FD900EB6F09 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FB94DB61F108FD900EB6F09 /* GameScene.cpp */; };
 		3FB94DBD1F10986E00EB6F09 /* ControllerLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FB94DBB1F10986E00EB6F09 /* ControllerLayer.cpp */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
@@ -120,6 +122,10 @@
 		3F2440BF1F13447400F5C039 /* Movement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Movement.hpp; sourceTree = "<group>"; };
 		3F8D806E1F1454E100314C0C /* HunterLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HunterLayer.cpp; sourceTree = "<group>"; };
 		3F8D806F1F1454E100314C0C /* HunterLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HunterLayer.hpp; sourceTree = "<group>"; };
+		3F8D80721F146CCC00314C0C /* ControllerForHunter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerForHunter.cpp; sourceTree = "<group>"; };
+		3F8D80731F146CCC00314C0C /* ControllerForHunter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ControllerForHunter.hpp; sourceTree = "<group>"; };
+		3F8D80751F146FB300314C0C /* ControllerForSnake.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerForSnake.cpp; sourceTree = "<group>"; };
+		3F8D80761F146FB300314C0C /* ControllerForSnake.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ControllerForSnake.hpp; sourceTree = "<group>"; };
 		3FB94DB61F108FD900EB6F09 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		3FB94DB71F108FD900EB6F09 /* GameScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameScene.hpp; sourceTree = "<group>"; };
 		3FB94DBB1F10986E00EB6F09 /* ControllerLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerLayer.cpp; sourceTree = "<group>"; };
@@ -302,6 +308,10 @@
 			children = (
 				3FB94DBB1F10986E00EB6F09 /* ControllerLayer.cpp */,
 				3FB94DBC1F10986E00EB6F09 /* ControllerLayer.hpp */,
+				3F8D80721F146CCC00314C0C /* ControllerForHunter.cpp */,
+				3F8D80731F146CCC00314C0C /* ControllerForHunter.hpp */,
+				3F8D80751F146FB300314C0C /* ControllerForSnake.cpp */,
+				3F8D80761F146FB300314C0C /* ControllerForSnake.hpp */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -584,8 +594,10 @@
 				3FB94DBD1F10986E00EB6F09 /* ControllerLayer.cpp in Sources */,
 				3F8D80701F1454E100314C0C /* HunterLayer.cpp in Sources */,
 				3FB94DB81F108FD900EB6F09 /* GameScene.cpp in Sources */,
+				3F8D80741F146CCC00314C0C /* ControllerForHunter.cpp in Sources */,
 				3F2440BD1F13390F00F5C039 /* BackgroundLayer.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				3F8D80771F146FB300314C0C /* ControllerForSnake.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 			);

@@ -4,7 +4,7 @@
 //
 //  Created by zeyong shan on 7/9/17.
 //
-//
+//  Do not delete me!
 
 #include "BackgroundLayer.hpp"
 #include "Defines.h"

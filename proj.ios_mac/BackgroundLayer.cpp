@@ -85,7 +85,7 @@ void BackgroundLayer::moveToo(Vec2 direction)
         for(int j = 0; j< PIXL_NUM; ++j)
         {
             currentPosition[i][j].add(direction);
-            log("%f, %f: %f", direction.x, direction.y, sqrt(pow(direction.x, 2) + pow(direction.y, 2)));
+            //log("%f, %f: %f", direction.x, direction.y, sqrt(pow(direction.x, 2) + pow(direction.y, 2)));
             backgroundPicture[i][j] -> setPosition(currentPosition[i][j]);
         }
     }

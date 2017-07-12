@@ -49,7 +49,7 @@ bool GameScene::init()
 
 void GameScene::initItemsForHunter()
 {
-    auto background = BackgroundLayer::create(Point(1000, 1000));
+    auto background = BackgroundLayer::create(Point(0, 0));
     auto controlLayer = ControllerForHunter::create();
     auto hunterLayer = HunterLayer::create();
     this -> addChild(background, 0);

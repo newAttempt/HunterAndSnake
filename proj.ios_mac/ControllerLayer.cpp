@@ -21,6 +21,7 @@ bool ControllerLayer::init()
         return false;
     initItems();
     initListener();
+    Movement::init();
     return true;
 }
 
@@ -53,7 +54,6 @@ void ControllerLayer::initItems()
     button = Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Controller/controllerButton.png"));
     button -> setPosition(SCREEN_CENTER);
     button -> setVisible(false);
-    log("%f", visiableSize.height * visiableSize.width);
     button -> setScale(visiableSize.height * visiableSize.width/1298030);
     this -> addChild(button, 1);
     

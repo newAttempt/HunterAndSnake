@@ -12,8 +12,11 @@
 class Movement
 {
 public:
+    static void init();
     static void moveHunter(cocos2d::Vec2, cocos2d::Scene* gameScene);
     static void moveSnake(cocos2d::Vec2, cocos2d::Scene* gameScene);
+private:
+    static cocos2d::Point p;
 };
 
 #endif /* Movement_hpp */

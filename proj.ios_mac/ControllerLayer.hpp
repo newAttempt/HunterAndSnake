@@ -32,6 +32,7 @@ private:
     std::function<void(cocos2d::Touch*, cocos2d::Event*)> ended;
     cocos2d::EventListenerTouchOneByOne* listener;
     cocos2d::Sprite* button;
+    cocos2d::Sprite* background;
     cocos2d::Point originalTouchPosition;
     cocos2d::Vec2 direction;
     std::mutex mutex;

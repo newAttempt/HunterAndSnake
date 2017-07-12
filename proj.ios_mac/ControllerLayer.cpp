@@ -21,6 +21,7 @@ bool ControllerLayer::init()
         return false;
     initItems();
     initListener();
+    Movement::init();
     return true;
 }
 
@@ -48,14 +49,19 @@ void ControllerLayer::initItems()
     button -> setVisible(false);
     button -> setScale(0.5);
     this -> addChild(button);
-     */
+     */ //Modified by Zeyong Shan       => upload the new ControllerButton and make new screen adapting.
     GET_ORI_VIS;
-    button = Sprite::Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Controller/centerButton.png"));
+    button = Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Controller/controllerButton.png"));
     button -> setPosition(SCREEN_CENTER);
-    button -> setTag(1);
     button -> setVisible(false);
-    button -> setScale(0.5);
-    this -> addChild(button);
+    button -> setScale(visiableSize.height * visiableSize.width/1298030);
+    this -> addChild(button, 1);
+    
+    background = Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Controller/greyBackingWithArrows.png"));
+    background -> setPosition(SCREEN_CENTER);
+    background -> setVisible(false);
+    background -> setScale(70/background -> getContentSize().width);
+    this -> addChild(background, 0);
 }
 
 
@@ -69,8 +75,10 @@ void ControllerLayer::initTouchBeginForDirectionController()
             if(originalTouchPosition.x !=0 || originalTouchPosition.y !=0)
                 return true;;
             button -> setPosition(t -> getLocation());
+            background -> setPosition(t -> getLocation());
             originalTouchPosition . set(t -> getLocation());
             button -> setVisible(true);
+            background -> setVisible(true);
             return true;
         }
         return false;
@@ -83,16 +91,6 @@ void ControllerLayer::initTouchMovedForDirectionController()
     moved = [this](Touch* t, Event* e)
     {
         float dis = originalTouchPosition . getDistance(t -> getLocation());
-        /*
-        if(dis < 30)
-        {
-            button -> setPosition(t -> getLocation());
-            mutex.lock();
-            direction = Vec2(t -> getLocation().x - originalTouchPosition.x, t -> getLocation().y - originalTouchPosition.y);
-            mutex.unlock();
-            return;
-        }
-         */
         float X = abs(t -> getLocation().x - originalTouchPosition . x);
         float Y = abs(t -> getLocation().y - originalTouchPosition . y);
         float x = (30 * X) / dis;
@@ -119,6 +117,7 @@ void ControllerLayer::initTouchEndedForDirectionController()
         if(endedFromTheEdge)
             return;
         button -> setVisible(false);
+        background -> setVisible(false);
         originalTouchPosition.x = 0;
         originalTouchPosition.y = 0;
         mutex.lock();

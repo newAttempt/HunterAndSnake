@@ -23,7 +23,7 @@ bool HunterLayer::init()
 void HunterLayer::initItems()
 {
     GET_ORI_VIS;
-    role = Sprite::create("res/Roles/hunter.png");
+    role = Sprite::Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Roles/hunter.png"));
     role -> setScale(5);
     role -> setPosition(SCREEN_CENTER);
     this -> addChild(role);

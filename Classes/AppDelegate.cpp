@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "GameScene.hpp"
+#include "LoadScene.hpp"
 #include "Defines.h"
 
 // #define USE_AUDIO_ENGINE 1
@@ -95,10 +95,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = GameScene::create(HUNTER_SCENE_TYPE);
-
+    auto loadScene = LoadScene::create(HUNTER_SCENE_TYPE);
     // run
-    director->runWithScene(scene);
+    director->runWithScene(loadScene);
 
     return true;
 }

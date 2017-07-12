@@ -40,6 +40,15 @@ void ControllerLayer::initListener()
 
 void ControllerLayer::initItems()
 {
+    /*
+    GET_ORI_VIS;
+    button = Sprite::Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Controller/centerButton.png"));
+    button -> setPosition(SCREEN_CENTER);
+    button -> setTag(1);
+    button -> setVisible(false);
+    button -> setScale(0.5);
+    this -> addChild(button);
+     */
     GET_ORI_VIS;
     button = Sprite::Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Controller/centerButton.png"));
     button -> setPosition(SCREEN_CENTER);

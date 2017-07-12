@@ -35,12 +35,13 @@ bool LoadScene::init()
         return false;
     initItems();
     
-    pictureNumTotal = 3;
+    pictureNumTotal = 4;
     pictureNumCurrent = 0;
     initCallBackFunc();
-    CCTextureCache::sharedTextureCache()->addImageAsync("res/GameScene/background.png", loadCallBack);
-    CCTextureCache::sharedTextureCache()->addImageAsync("res/Controller/centerButton.png", loadCallBack);
+    CCTextureCache::sharedTextureCache()->addImageAsync("res/GameScene/backgroundReal.png", loadCallBack);
+    CCTextureCache::sharedTextureCache()->addImageAsync("res/Controller/controllerButton.png", loadCallBack);
     CCTextureCache::sharedTextureCache()->addImageAsync("res/Roles/hunter.png", loadCallBack);
+    CCTextureCache::sharedTextureCache()->addImageAsync("res/Controller/greyBackingWithArrows.png", loadCallBack);
     return true;
 }
 

@@ -51,7 +51,7 @@ void BackgroundLayer::initItems()
     {
         for(int j = 0; j< PIXL_NUM; ++j)
         {
-            backgroundPicture[i][j] = CCSprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/GameScene/background.png"));
+            backgroundPicture[i][j] = CCSprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/GameScene/backgroundReal.png"));
             backgroundPicture[i][j] -> setAnchorPoint(Vec2(0, 0));
             backgroundPicture[i][j] -> setPosition(origin.x + visiableSize.width/2 + i * backgroundPicture[0][0] -> getContentSize().width + i * (-1), \
                                                    origin.y + visiableSize.height/2 + j * backgroundPicture[0][0] -> getContentSize().height + j * (-1));

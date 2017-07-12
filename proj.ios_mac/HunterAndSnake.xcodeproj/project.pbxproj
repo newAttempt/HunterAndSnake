@@ -17,6 +17,7 @@
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3F2440BD1F13390F00F5C039 /* BackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F2440BB1F13390F00F5C039 /* BackgroundLayer.cpp */; };
 		3F2440C01F13447400F5C039 /* Movement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F2440BE1F13447400F5C039 /* Movement.cpp */; };
+		3F5D87C81F157FEC00630FAA /* LoadScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F5D87C61F157FEC00630FAA /* LoadScene.cpp */; };
 		3F8D80701F1454E100314C0C /* HunterLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D806E1F1454E100314C0C /* HunterLayer.cpp */; };
 		3F8D80741F146CCC00314C0C /* ControllerForHunter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D80721F146CCC00314C0C /* ControllerForHunter.cpp */; };
 		3F8D80771F146FB300314C0C /* ControllerForSnake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D80751F146FB300314C0C /* ControllerForSnake.cpp */; };
@@ -120,6 +121,8 @@
 		3F2440BC1F13390F00F5C039 /* BackgroundLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = BackgroundLayer.hpp; sourceTree = "<group>"; };
 		3F2440BE1F13447400F5C039 /* Movement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Movement.cpp; sourceTree = "<group>"; };
 		3F2440BF1F13447400F5C039 /* Movement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Movement.hpp; sourceTree = "<group>"; };
+		3F5D87C61F157FEC00630FAA /* LoadScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadScene.cpp; sourceTree = "<group>"; };
+		3F5D87C71F157FEC00630FAA /* LoadScene.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LoadScene.hpp; sourceTree = "<group>"; };
 		3F8D806E1F1454E100314C0C /* HunterLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HunterLayer.cpp; sourceTree = "<group>"; };
 		3F8D806F1F1454E100314C0C /* HunterLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HunterLayer.hpp; sourceTree = "<group>"; };
 		3F8D80721F146CCC00314C0C /* ControllerForHunter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerForHunter.cpp; sourceTree = "<group>"; };
@@ -359,6 +362,8 @@
 				3F2440BC1F13390F00F5C039 /* BackgroundLayer.hpp */,
 				3F8D806E1F1454E100314C0C /* HunterLayer.cpp */,
 				3F8D806F1F1454E100314C0C /* HunterLayer.hpp */,
+				3F5D87C61F157FEC00630FAA /* LoadScene.cpp */,
+				3F5D87C71F157FEC00630FAA /* LoadScene.hpp */,
 			);
 			name = GameScene;
 			sourceTree = "<group>";
@@ -593,6 +598,7 @@
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				3FB94DBD1F10986E00EB6F09 /* ControllerLayer.cpp in Sources */,
 				3F8D80701F1454E100314C0C /* HunterLayer.cpp in Sources */,
+				3F5D87C81F157FEC00630FAA /* LoadScene.cpp in Sources */,
 				3FB94DB81F108FD900EB6F09 /* GameScene.cpp in Sources */,
 				3F8D80741F146CCC00314C0C /* ControllerForHunter.cpp in Sources */,
 				3F2440BD1F13390F00F5C039 /* BackgroundLayer.cpp in Sources */,

@@ -41,7 +41,7 @@ void ControllerLayer::initListener()
 void ControllerLayer::initItems()
 {
     GET_ORI_VIS;
-    button = Sprite::create("res/Controller/centerButton.png");
+    button = Sprite::Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Controller/centerButton.png"));
     button -> setPosition(SCREEN_CENTER);
     button -> setTag(1);
     button -> setVisible(false);
@@ -74,6 +74,7 @@ void ControllerLayer::initTouchMovedForDirectionController()
     moved = [this](Touch* t, Event* e)
     {
         float dis = originalTouchPosition . getDistance(t -> getLocation());
+        /*
         if(dis < 30)
         {
             button -> setPosition(t -> getLocation());
@@ -82,6 +83,7 @@ void ControllerLayer::initTouchMovedForDirectionController()
             mutex.unlock();
             return;
         }
+         */
         float X = abs(t -> getLocation().x - originalTouchPosition . x);
         float Y = abs(t -> getLocation().y - originalTouchPosition . y);
         float x = (30 * X) / dis;
@@ -124,7 +126,7 @@ void ControllerLayer::initScheduleToCheckTheMovementDirectionForHunter()
         if(direction.x != 0 && direction.y != 0)
         {
             auto parent = (GameScene*)this -> getParent();
-            Movement::moveHunter(direction, parent, 1);
+            Movement::moveHunter(direction, parent);
         }
         mutex.unlock();
     };
@@ -137,7 +139,7 @@ void ControllerLayer::initScheduleToCheckTheMovementDirectionForSnake()
         if(direction.x != 0 && direction.y != 0)
         {
             auto parent = (GameScene*)this -> getParent();
-            Movement::moveSnake(direction, parent, 1);
+            Movement::moveSnake(direction, parent);
         }
         mutex.unlock();
     };

@@ -8,6 +8,7 @@
 
 #ifndef backgroundLayer_hpp
 #define backgroundLayer_hpp
+#define PIXL_NUM 6
 
 class BackgroundLayer: public cocos2d::Layer
 {
@@ -16,12 +17,15 @@ public:
     BackgroundLayer(cocos2d::Point);
     virtual bool init();
     
-    bool move(cocos2d::Vec2, unsigned);
+    bool move(cocos2d::Vec2);
 private:
     void initItems();
+    void setStartPoint();
+    void moveToo(cocos2d::Vec2 direction);
     
-    cocos2d::Point currentPosition;
-    cocos2d::Sprite* backgroundPicture;
+    cocos2d::Point currentPosition[PIXL_NUM][PIXL_NUM];
+    cocos2d::Point startPoint;
+    cocos2d::CCSprite* backgroundPicture[PIXL_NUM][PIXL_NUM];
 };
 
 

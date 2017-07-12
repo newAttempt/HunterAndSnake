@@ -13,6 +13,16 @@
 auto visiableSize = Director::getInstance()->getVisibleSize()
 
 #define SCREEN_CENTER origin.x + visiableSize.width/2, origin.y + visiableSize.height/2
-#define BACKGROUND 0
 
+
+//The definations for Layer childern
+#define BACKGROUND_LAYER            0
+#define HUNTER_LAYER                1
+
+
+
+
+//The definations for sceneTypes
+#define HUNTER_SCENE_TYPE    0
+#define SNAKE_SCENE_TYPE     1
 #endif /* Header_h */

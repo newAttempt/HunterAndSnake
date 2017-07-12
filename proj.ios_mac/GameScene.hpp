@@ -13,10 +13,14 @@
 class GameScene: public cocos2d::Scene
 {
 public:
-    CREATE_FUNC(GameScene);
+    static GameScene* create(int sceneType);
+    GameScene(int sceneType);
     virtual bool init();
 private:
-    void initItems();
+    void initItemsForHunter();
+    void initItemsForSnake();
+    
+    int sceneType;
 };
 
 

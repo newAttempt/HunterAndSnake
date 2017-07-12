@@ -8,8 +8,8 @@
 
 #include "BackgroundLayer.hpp"
 #include "Defines.h"
-#define MAX_X 100
-#define MAX_Y 100
+#define MAX_X 1000
+#define MAX_Y 1000
 #define MIN_X 0
 #define MIN_Y 0
 USING_NS_CC;
@@ -29,15 +29,15 @@ BackgroundLayer* BackgroundLayer::create(Point p)
 
 BackgroundLayer:: BackgroundLayer(Point p)
 {
-    this -> currentPosition.set(p);
+    this -> startPoint.set(p);
 }
 
 bool BackgroundLayer::init()
 {
     if(!Layer::init())
         return true;
-    if(!(currentPosition.x < MAX_X && currentPosition.x > MIN_X\
-         && currentPosition.y < MAX_Y && currentPosition.y > MIN_Y))
+    if(!(startPoint.x <= MAX_X && startPoint.x >= MIN_X\
+         && startPoint.y <= MAX_Y && startPoint.y >= MIN_Y))
         return false;
     initItems();
     return true;
@@ -46,27 +46,58 @@ bool BackgroundLayer::init()
 void BackgroundLayer::initItems()
 {
     GET_ORI_VIS;
-    backgroundPicture = Sprite::create("res/GameScene/background.png");
-    backgroundPicture -> setScale(10);
-    backgroundPicture -> setAnchorPoint(Vec2(currentPosition.x/100, currentPosition.y/100));
-    backgroundPicture -> setPosition(SCREEN_CENTER);
-    currentPosition = Point(SCREEN_CENTER);
-    this -> addChild(backgroundPicture);
+    for(int i = 0; i < PIXL_NUM; ++i)
+    {
+        for(int j = 0; j< PIXL_NUM; ++j)
+        {
+            backgroundPicture[i][j] = CCSprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/GameScene/background.png"));
+            backgroundPicture[i][j] -> setAnchorPoint(Vec2(0, 0));
+            backgroundPicture[i][j] -> setPosition(origin.x + visiableSize.width/2 + i * backgroundPicture[0][0] -> getContentSize().width + i * (-1), \
+                                                   origin.y + visiableSize.height/2 + j * backgroundPicture[0][0] -> getContentSize().height + j * (-1));
+            currentPosition[i][j] = Point(backgroundPicture[i][j] -> getPosition());
+            this -> addChild(backgroundPicture[i][j]);
+        }
+    }
+    setStartPoint();
+    
 }
 
-bool BackgroundLayer::move(Vec2 direction, unsigned times)
+bool BackgroundLayer::move(Vec2 direction)
 {
-    for(int x = 0; x<times; ++x)
+    for(int i = 0; i < PIXL_NUM; ++i)
     {
-        currentPosition.add(direction*0.05);
-        backgroundPicture -> setPosition(currentPosition);
+        for(int j = 0; j< PIXL_NUM; ++j)
+        {
+            float width = backgroundPicture[0][0] -> getContentSize().width;
+            Vec2 realDir = Vec2(direction.x * (width*PIXL_NUM/3800)/1.5, direction.y * (width*PIXL_NUM/3800)/1.5);
+            currentPosition[i][j].add(realDir);
+            backgroundPicture[i][j] -> setPosition(currentPosition[i][j]);
+        }
     }
     return true;
 }
 
+void BackgroundLayer::moveToo(Vec2 direction)
+{
+    for(int i = 0; i < PIXL_NUM; ++i)
+    {
+        for(int j = 0; j< PIXL_NUM; ++j)
+        {
+            currentPosition[i][j].add(direction);
+            log("%f, %f: %f", direction.x, direction.y, sqrt(pow(direction.x, 2) + pow(direction.y, 2)));
+            backgroundPicture[i][j] -> setPosition(currentPosition[i][j]);
+        }
+    }
+}
 
-
-
+void BackgroundLayer::setStartPoint()
+{
+    float x = startPoint.x;
+    float y = startPoint.y;
+    float width = backgroundPicture[0][0] -> getContentSize().width;
+    float height = backgroundPicture[0][0] -> getContentSize().height;
+    moveToo(Vec2(-width*PIXL_NUM * x/1000 , -height*PIXL_NUM * y/1000));
+}
 
 
 

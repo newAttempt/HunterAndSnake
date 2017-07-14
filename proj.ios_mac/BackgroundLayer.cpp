@@ -85,7 +85,6 @@ void BackgroundLayer::moveToo(Vec2 direction)
         for(int j = 0; j< PIXL_NUM; ++j)
         {
             currentPosition[i][j].add(direction);
-            //log("%f, %f: %f", direction.x, direction.y, sqrt(pow(direction.x, 2) + pow(direction.y, 2)));
             backgroundPicture[i][j] -> setPosition(currentPosition[i][j]);
         }
     }
@@ -97,7 +96,7 @@ void BackgroundLayer::setStartPoint()
     float y = startPoint.y;
     float width = backgroundPicture[0][0] -> getContentSize().width;
     float height = backgroundPicture[0][0] -> getContentSize().height;
-    moveToo(Vec2(-width*PIXL_NUM * x/1000 , -height*PIXL_NUM * y/1000));
+    moveToo(Vec2(-width*PIXL_NUM * x/5674.5 , -height*PIXL_NUM * y/5809.29));
 }
 
 

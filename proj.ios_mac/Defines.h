@@ -26,3 +26,7 @@ auto visiableSize = Director::getInstance()->getVisibleSize()
 #define HUNTER_SCENE_TYPE    0
 #define SNAKE_SCENE_TYPE     1
 #endif /* Header_h */
+void logPosition(cocos2d::Point p);
+void logDirection(cocos2d::Vec2 v);
+
+#define MAX_NUM_SHIP 6

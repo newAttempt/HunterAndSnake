@@ -8,6 +8,7 @@
 
 #ifndef HunterLayer_hpp
 #define HunterLayer_hpp
+#include "Ship.hpp"
 
 class HunterLayer : public cocos2d::Layer
 {
@@ -18,8 +19,8 @@ public:
     void setDirection(cocos2d::Vec2 direction);
 private:
     void initItems();
+    Ship* role;
     
-    cocos2d::Sprite* role;
 };
 
 #endif /* HunterLayer_hpp */

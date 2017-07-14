@@ -8,6 +8,7 @@
 
 #include "HunterLayer.hpp"
 #include "Defines.h"
+#include "Ship.hpp"
 USING_NS_CC;
 
 bool HunterLayer::init()
@@ -23,9 +24,7 @@ bool HunterLayer::init()
 void HunterLayer::initItems()
 {
     GET_ORI_VIS;
-    role = Sprite::Sprite::createWithTexture(CCTextureCache::sharedTextureCache() -> textureForKey("res/Roles/hunter.png"));
-    role -> setScale(5);
-    role -> setPosition(SCREEN_CENTER);
+    role = Ship::create(0);
     this -> addChild(role);
 }
 

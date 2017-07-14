@@ -8,15 +8,19 @@
 
 #ifndef HuntersSet_hpp
 #define HuntersSet_hpp
+#include "HunterStatus.hpp"
 
-class HunterSet
+class HunterSet: cocos2d::Node
 {
 public:
+    CREATE_FUNC(HunterSet);
+    virtual bool init();
     HunterSet();
     ~HunterSet();
-    bool addHunter(std::string uniqueID, cocos2d::Point hunterPosition);
+    bool addHunter(std::string uniqueID, HunterStatus *);
+    void print(std::string);
 private:
-    std::map<std::string, cocos2d::Point> hunterMap;
+    std::map<std::string, HunterStatus *> hunterMap;
 };
 
 #endif /* HuntersMap_hpp */

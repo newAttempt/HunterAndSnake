@@ -9,6 +9,7 @@
 #include "LoadScene.hpp"
 #include "GameScene.hpp"
 #include "Defines.h"
+#include <unistd.h>
 USING_NS_CC;
 
 LoadScene* LoadScene::create(int gameSceneType)
@@ -38,10 +39,13 @@ bool LoadScene::init()
     pictureNumTotal = 4;
     pictureNumCurrent = 0;
     initCallBackFunc();
-    CCTextureCache::sharedTextureCache()->addImageAsync("res/GameScene/backgroundReal.png", loadCallBack);
-    CCTextureCache::sharedTextureCache()->addImageAsync("res/Controller/controllerButton.png", loadCallBack);
-    CCTextureCache::sharedTextureCache()->addImageAsync("res/Roles/hunter.png", loadCallBack);
-    CCTextureCache::sharedTextureCache()->addImageAsync("res/Controller/greyBackingWithArrows.png", loadCallBack);
+    Director::getInstance()->getScheduler()->schedule([this](float){
+        CCTextureCache::sharedTextureCache()->addImageAsync("res/GameScene/backgroundReal.png", loadCallBack);
+        CCTextureCache::sharedTextureCache()->addImageAsync("res/Controller/controllerButton.png", loadCallBack);
+        CCTextureCache::sharedTextureCache()->addImageAsync("res/Roles/level1Ship.png", loadCallBack);
+        CCTextureCache::sharedTextureCache()->addImageAsync("res/Controller/greyBackingWithArrows.png", loadCallBack);
+    }, this, 0.1, 0, 0.5, false, "delay1");
+    
     return true;
 }
 

@@ -13,20 +13,47 @@
 #include <math.h>
 USING_NS_CC;
 
-Point Movement::p;
+HunterStatus* Movement:: mainRoleStatus;
 
-void Movement::init()
+void Movement::init(Scene* gameScene)
 {
-    p.set(0, 0);
+    mainRoleStatus = HunterStatus::create(Point(16, 21), Vec2(0, 0));
+    gameScene -> addChild(mainRoleStatus);
+   // mainRoleStatus -> startRefreshingStatus();
 }
 
 void Movement::moveHunter(Vec2 direction, Scene* gameScene)
 {
     auto background = (BackgroundLayer*) gameScene -> getChildByTag(BACKGROUND_LAYER);
     auto hunter = (HunterLayer*) gameScene -> getChildByTag(HUNTER_LAYER);
-    background -> move(Vec2(direction.x * -1 * 0.05, direction.y * -1 * 0.05));
     hunter -> setDirection(direction);
-    p.add(Vec2(direction.x * 0.05, direction.y * 0.05));
+    
+    if(((mainRoleStatus -> getPosition().x > 5674.5 && direction.x > 0) ||(mainRoleStatus -> getPosition().x < 16 && direction.x < 0)))
+    {
+        direction.x = 0;
+        if(direction.y > 0)
+            direction.y = 30;
+        else if(direction.y < 0)
+            direction.y = -30;
+        else
+            direction.y = 0;
+    }
+    if((mainRoleStatus -> getPosition().y > 5809 && direction.y > 0) || (mainRoleStatus -> getPosition().y < 21 && direction.y < 0))
+    {
+        direction.y = 0;
+        if(direction.x > 0)
+            direction.x = 30;
+        else if(direction.x < 0)
+            direction.x = -30;
+        else
+            direction.x = 0;
+    }
+    
+    background -> move(Vec2(direction.x * -1 * 0.05, direction.y * -1 * 0.05));
+    mainRoleStatus ->setDirection(direction);
+    Point temp = mainRoleStatus -> getPosition();
+    temp.add(Vec2(direction.x * 0.05, direction.y * 0.05));
+    mainRoleStatus -> setPosition(temp);
 }
 
 
@@ -38,3 +65,4 @@ void Movement::moveSnake(Vec2 direction, Scene* gameScene)
 //5693.348145, 5830.480957   Iphone 5
 //5691.214355, 5809.899902   Iphone 7 Plus
 //5680.570801, 5817.456543   Ipad Pro 12.9inch
+//5674.5, 5809.29 --16, 21

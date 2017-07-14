@@ -12,6 +12,10 @@
 #include "BackgroundLayer.hpp"
 #include "HunterLayer.hpp"
 #include "ControllerForSnake.hpp"
+#include "HunterStatus.hpp"
+#include "HuntersSet.hpp"
+#include "Movement.hpp"
+#include <unistd.h>
 USING_NS_CC;
 
 
@@ -43,18 +47,19 @@ bool GameScene::init()
         initItemsForHunter();
     else
         initItemsForSnake();
+    Movement::init(this);
     return true;
 }
 
 
 void GameScene::initItemsForHunter()
 {
-    auto background = BackgroundLayer::create(Point(0, 0));
+    auto background = BackgroundLayer::create(Point(16, 21));
     auto controlLayer = ControllerForHunter::create();
     auto hunterLayer = HunterLayer::create();
     this -> addChild(background, 0);
     this -> addChild(hunterLayer, 2);
-    this -> addChild(controlLayer, 10);
+    this -> addChild(controlLayer, 3);
     background -> setTag(BACKGROUND_LAYER);
     hunterLayer -> setTag(HUNTER_LAYER);
 }

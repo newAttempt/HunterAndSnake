@@ -21,7 +21,6 @@ bool ControllerLayer::init()
         return false;
     initItems();
     initListener();
-    Movement::init();
     return true;
 }
 
@@ -131,11 +130,8 @@ void ControllerLayer::initScheduleToCheckTheMovementDirectionForHunter()
 {
     scheduleToCheckTheMovementDirection = [this](float){
         mutex.lock();
-        if(direction.x != 0 && direction.y != 0)
-        {
-            auto parent = (GameScene*)this -> getParent();
-            Movement::moveHunter(direction, parent);
-        }
+        auto parent = (GameScene*)this -> getParent();
+        Movement::moveHunter(direction, parent);
         mutex.unlock();
     };
 }
@@ -144,11 +140,8 @@ void ControllerLayer::initScheduleToCheckTheMovementDirectionForSnake()
 {
     scheduleToCheckTheMovementDirection = [this](float){
         mutex.lock();
-        if(direction.x != 0 && direction.y != 0)
-        {
-            auto parent = (GameScene*)this -> getParent();
-            Movement::moveSnake(direction, parent);
-        }
+        auto parent = (GameScene*)this -> getParent();
+        Movement::moveSnake(direction, parent);
         mutex.unlock();
     };
 }

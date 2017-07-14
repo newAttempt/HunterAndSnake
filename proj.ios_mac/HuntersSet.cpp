@@ -7,8 +7,17 @@
 //
 
 #include "HuntersSet.hpp"
+#include "Defines.h"
 USING_NS_CC;
 using namespace std;
+
+bool HunterSet::init()
+{
+    if(!Node::init())
+        return false;
+    
+    return true;
+}
 
 HunterSet::HunterSet()
 {
@@ -16,15 +25,23 @@ HunterSet::HunterSet()
 }
 
 
-bool HunterSet::addHunter(string uniqueID, Point hunterPosition)
+bool HunterSet::addHunter(string uniqueID, HunterStatus* status)
 {
     auto search = hunterMap.find(uniqueID);
     if(search != hunterMap.end())
         return false;
-    hunterMap[uniqueID] = hunterPosition;
+    hunterMap[uniqueID] = status;
     return true;
 }
 
+void HunterSet::print(string s)
+{
+    for(auto it = hunterMap.begin(); it!=hunterMap.end(); ++it)
+    {
+        logPosition(it -> second -> getPosition());
+        logDirection(it -> second -> getDirection());
+    }
+}
 
 HunterSet::~HunterSet()
 {

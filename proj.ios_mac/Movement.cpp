@@ -19,7 +19,7 @@ void Movement::init(Scene* gameScene)
 {
     mainRoleStatus = HunterStatus::create(Point(16, 21), Vec2(0, 0));
     gameScene -> addChild(mainRoleStatus);
-   // mainRoleStatus -> startRefreshingStatus();
+    // mainRoleStatus -> startRefreshingStatus();
 }
 
 void Movement::moveHunter(Vec2 direction, Scene* gameScene)
@@ -28,7 +28,8 @@ void Movement::moveHunter(Vec2 direction, Scene* gameScene)
     auto hunter = (HunterLayer*) gameScene -> getChildByTag(HUNTER_LAYER);
     hunter -> setDirection(direction);
     
-    if(((mainRoleStatus -> getPosition().x > 5674.5 && direction.x > 0) ||(mainRoleStatus -> getPosition().x < 16 && direction.x < 0)))
+    if(((mainRoleStatus -> getPosition().x > 5674.5 && direction.x > 0)\
+        ||(mainRoleStatus -> getPosition().x < 16 && direction.x < 0)))
     {
         direction.x = 0;
         if(direction.y > 0)
@@ -38,7 +39,9 @@ void Movement::moveHunter(Vec2 direction, Scene* gameScene)
         else
             direction.y = 0;
     }
-    if((mainRoleStatus -> getPosition().y > 5809 && direction.y > 0) || (mainRoleStatus -> getPosition().y < 21 && direction.y < 0))
+    
+    if((mainRoleStatus -> getPosition().y > 5809 && direction.y > 0)\
+       || (mainRoleStatus -> getPosition().y < 21 && direction.y < 0))
     {
         direction.y = 0;
         if(direction.x > 0)

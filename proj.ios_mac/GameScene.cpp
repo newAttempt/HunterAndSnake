@@ -15,6 +15,7 @@
 #include "HunterStatus.hpp"
 #include "HuntersSet.hpp"
 #include "Movement.hpp"
+#include "Client.hpp"
 #include <unistd.h>
 USING_NS_CC;
 
@@ -62,6 +63,7 @@ void GameScene::initItemsForHunter()
     this -> addChild(controlLayer, 3);
     background -> setTag(BACKGROUND_LAYER);
     hunterLayer -> setTag(HUNTER_LAYER);
+    auto client = Client::create();
 }
 
 

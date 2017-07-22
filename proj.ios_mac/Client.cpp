@@ -24,7 +24,7 @@ bool Client::init()
         CCLOG("connect to server success!");
         
         // 开启新线程，在子线程中，接收数据
-        socket.Send("0", 1);
+        socket.Send("1654654", 7);
         socket.Connect(ip, port);
         std::thread recvThread = std::thread(&Client::receiveData, this);
         recvThread.detach(); // 从主线程分离

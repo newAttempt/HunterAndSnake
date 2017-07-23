@@ -7,54 +7,79 @@
 //
 
 #include "Client.hpp"
-
+#include "InstructionQueue.hpp"
+#include "DataBufferPool.hpp"
+USING_NS_CC;
+using namespace std;
 
 
 bool Client::init()
 {
     if(!Node::init())
         return false;
-    socket.Init();
-    socket.Create(AF_INET, SOCK_STREAM);
-    const char* ip = "10.0.0.44";
-    int   port     = 5000;
-    bool  result   = socket.Connect(ip, port);
     
+    socket.Init();
+    InstructionQueue::init();
+    DataBufferPool::init();
+    socket.Create(AF_INET, SOCK_STREAM);
+    const char* ip   = "10.0.0.44";
+    int   port       = 5000;
+    connectionStatus = false;
+    
+    bool  result   = socket.Connect(ip, port);
     if (result) {
+        connectionStatus = true;
         CCLOG("connect to server success!");
-        
-        // 开启新线程，在子线程中，接收数据
-        socket.Send("0", 1);
         socket.Connect(ip, port);
         std::thread recvThread = std::thread(&Client::receiveData, this);
-        recvThread.detach(); // 从主线程分离
+        std::thread sendThread = std::thread(&Client::sendData,    this);
+        recvThread.detach();
+        sendThread.detach();
     }
     else {
         CCLOG("can not connect to server");
         return false;
     }
+    
     return true;
 }
 
 
 void Client::receiveData()
 {
-    // 因为是强联网
-    // 所以可以一直检测服务端是否有数据传来
     while (true) {
-        
-        // 接收数据 Recv
-        
         char data[512] = "";
         int result = socket.Recv(data, 512, 0);
-        cocos2d::log("result is : sdfasdfsfsdf%d", result);
-        
-        
-        // 与服务器的连接断开了
-        if (result <= 0) break;
-        
-       CCLOG("%s\n\n\n\n\n\n\n\n\n\n\\n\n\n\n\n\n", data);
+        if (result <= 0) {
+            log("connection closed!");
+            //connectionStatus = false;
+            //break;
+        }
+        string data_str(data);
+        DataBufferPool::enqueue(data_str);
     }
-    // 关闭连接
     socket.Close();
 }
+
+
+void Client::sendData()
+{
+    ///*
+    for(int i=0; i<20; ++i)
+    {
+        InstructionQueue::enqueue("0");
+    }
+     //*/
+    InstructionQueue::enqueue("2 0-14");
+    while (connectionStatus) {
+        string instruction = InstructionQueue::dequeue();
+        if(!instruction.empty())
+        {
+            instruction += "x";
+            socket.Send(instruction.c_str(), instruction.length());
+        }
+        
+    }
+}
+
+

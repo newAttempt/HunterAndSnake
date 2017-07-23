@@ -15,6 +15,7 @@
 		294D0D641D0D56D500F7F5D4 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 294D0D631D0D56D500F7F5D4 /* CoreText.framework */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
+		3F0253401F24251C00C6EDFB /* InstructionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F02533E1F24251C00C6EDFB /* InstructionQueue.cpp */; };
 		3F2440C01F13447400F5C039 /* Movement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F2440BE1F13447400F5C039 /* Movement.cpp */; };
 		3F885E9A1F21E934007F4719 /* HuntersSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F885E961F21E934007F4719 /* HuntersSet.cpp */; };
 		3F885E9B1F21E934007F4719 /* HunterStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F885E981F21E934007F4719 /* HunterStatus.cpp */; };
@@ -29,6 +30,8 @@
 		3F8D80741F146CCC00314C0C /* ControllerForHunter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D80721F146CCC00314C0C /* ControllerForHunter.cpp */; };
 		3F8D80771F146FB300314C0C /* ControllerForSnake.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D80751F146FB300314C0C /* ControllerForSnake.cpp */; };
 		3FB94DBD1F10986E00EB6F09 /* ControllerLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FB94DBB1F10986E00EB6F09 /* ControllerLayer.cpp */; };
+		3FD6B7771F2468C800EAC6CA /* DataBufferPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6B7751F2468C800EAC6CA /* DataBufferPool.cpp */; };
+		3FD6B7791F246DE000EAC6CA /* Defines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3FD6B7781F246DE000EAC6CA /* Defines.cpp */; };
 		46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 46880B8419C43A87006E1F66 /* AppDelegate.cpp */; };
 		503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 503AE0F617EB97AB00D1A890 /* Icon.icns */; };
@@ -123,6 +126,8 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		294D0D631D0D56D500F7F5D4 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
+		3F02533E1F24251C00C6EDFB /* InstructionQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InstructionQueue.cpp; sourceTree = "<group>"; };
+		3F02533F1F24251C00C6EDFB /* InstructionQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InstructionQueue.hpp; sourceTree = "<group>"; };
 		3F2440BE1F13447400F5C039 /* Movement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Movement.cpp; sourceTree = "<group>"; };
 		3F2440BF1F13447400F5C039 /* Movement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Movement.hpp; sourceTree = "<group>"; };
 		3F885E961F21E934007F4719 /* HuntersSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuntersSet.cpp; sourceTree = "<group>"; };
@@ -154,6 +159,9 @@
 		3FB94DBB1F10986E00EB6F09 /* ControllerLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ControllerLayer.cpp; sourceTree = "<group>"; };
 		3FB94DBC1F10986E00EB6F09 /* ControllerLayer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ControllerLayer.hpp; sourceTree = "<group>"; };
 		3FB94DBF1F109A4300EB6F09 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		3FD6B7751F2468C800EAC6CA /* DataBufferPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataBufferPool.cpp; sourceTree = "<group>"; };
+		3FD6B7761F2468C800EAC6CA /* DataBufferPool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DataBufferPool.hpp; sourceTree = "<group>"; };
+		3FD6B7781F246DE000EAC6CA /* Defines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Defines.cpp; sourceTree = "<group>"; };
 		46880B8419C43A87006E1F66 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		46880B8519C43A87006E1F66 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		503AE0F617EB97AB00D1A890 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
@@ -327,6 +335,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3F02533C1F2422F000C6EDFB /* BufferPool */ = {
+			isa = PBXGroup;
+			children = (
+				3F02533E1F24251C00C6EDFB /* InstructionQueue.cpp */,
+				3F02533F1F24251C00C6EDFB /* InstructionQueue.hpp */,
+				3FD6B7751F2468C800EAC6CA /* DataBufferPool.cpp */,
+				3FD6B7761F2468C800EAC6CA /* DataBufferPool.hpp */,
+			);
+			name = BufferPool;
+			sourceTree = "<group>";
+		};
 		3F2440AB1F1333D200F5C039 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +362,7 @@
 		3F2440B61F1336EE00F5C039 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				3F02533C1F2422F000C6EDFB /* BufferPool */,
 				3F2440BE1F13447400F5C039 /* Movement.cpp */,
 				3F2440BF1F13447400F5C039 /* Movement.hpp */,
 				3F885E9C1F21E93D007F4719 /* RemoteData */,
@@ -436,6 +456,7 @@
 		3FB94DBE1F109A2A00EB6F09 /* Definition */ = {
 			isa = PBXGroup;
 			children = (
+				3FD6B7781F246DE000EAC6CA /* Defines.cpp */,
 				3FB94DBF1F109A4300EB6F09 /* Defines.h */,
 			);
 			name = Definition;
@@ -653,6 +674,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F2440C01F13447400F5C039 /* Movement.cpp in Sources */,
+				3FD6B7771F2468C800EAC6CA /* DataBufferPool.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				3F885EB31F21EA3B007F4719 /* BackgroundLayer.cpp in Sources */,
 				3F885EB41F21EA3B007F4719 /* HunterLayer.cpp in Sources */,
@@ -663,7 +685,9 @@
 				3F885EB21F21EA3B007F4719 /* GameScene.cpp in Sources */,
 				3FB94DBD1F10986E00EB6F09 /* ControllerLayer.cpp in Sources */,
 				3F885EA41F21E9B6007F4719 /* stdafx.cpp in Sources */,
+				3FD6B7791F246DE000EAC6CA /* Defines.cpp in Sources */,
 				3F885E9A1F21E934007F4719 /* HuntersSet.cpp in Sources */,
+				3F0253401F24251C00C6EDFB /* InstructionQueue.cpp in Sources */,
 				3F8D80741F146CCC00314C0C /* ControllerForHunter.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				3F8D80771F146FB300314C0C /* ControllerForSnake.cpp in Sources */,

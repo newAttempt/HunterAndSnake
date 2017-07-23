@@ -18,6 +18,8 @@ public:
     
 private:
     void receiveData();
+    void sendData();
     ODSocket socket;
+    bool connectionStatus;
 };
 #endif /* Client_hpp */

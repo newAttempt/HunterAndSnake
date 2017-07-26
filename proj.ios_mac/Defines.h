@@ -39,7 +39,7 @@ auto visiableSize = Director::getInstance()->getVisibleSize()
 //function defination
 void logPosition(cocos2d::Point p);
 void logDirection(cocos2d::Vec2 v);
-
+void split(std::string*&, std::string, int&);
 
 
 #endif /* Header_h */

@@ -21,7 +21,7 @@ bool ControllerForHunter::init()
 void ControllerForHunter::initScheduler()
 {
     initScheduleToCheckTheMovementDirectionForHunter();
-    Director::getInstance()->getScheduler()->schedule(scheduleToCheckTheMovementDirection, this, 0.01, kRepeatForever, 0, true, "checkDirection");
+    Director::getInstance()->getScheduler()->schedule(scheduleToCheckTheMovementDirection, this, 0.02, kRepeatForever, 0, true, "checkDirection");
 }
 
 

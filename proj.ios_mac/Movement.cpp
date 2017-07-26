@@ -10,20 +10,32 @@
 #include "BackgroundLayer.hpp"
 #include "HunterLayer.hpp"
 #include "Defines.h"
+#include "InstructionQueue.hpp"
+#include "DataBufferPool.hpp"
 #include <math.h>
 USING_NS_CC;
 
 HunterStatus* Movement:: mainRoleStatus;
+std::string   Movement:: id;
+WebManager*   Movement:: webManager;
 
 void Movement::init(Scene* gameScene)
 {
     mainRoleStatus = HunterStatus::create(Point(16, 21), Vec2(0, 0));
     gameScene -> addChild(mainRoleStatus);
-    // mainRoleStatus -> startRefreshingStatus();
+    webManager = WebManager::create();
+    webManager -> signUpPosition([](std::string tid){
+        log("the new position is: %s", tid.c_str());
+        id = tid;
+    }, [](){
+        log("game start!!!!!");
+    });
 }
 
 void Movement::moveHunter(Vec2 direction, Scene* gameScene)
 {
+    direction.x *=2;
+    direction.y *=2;
     auto background = (BackgroundLayer*) gameScene -> getChildByTag(BACKGROUND_LAYER);
     auto hunter = (HunterLayer*) gameScene -> getChildByTag(HUNTER_LAYER);
     hunter -> setDirection(direction);
@@ -51,7 +63,11 @@ void Movement::moveHunter(Vec2 direction, Scene* gameScene)
         else
             direction.x = 0;
     }
-    
+    std::string inst = "1 ";
+    std::string x_str = std::to_string(mainRoleStatus -> getPosition().x);
+    std::string y_str = std::to_string(mainRoleStatus -> getPosition().y);
+    inst += id + " " + x_str + " " + y_str;
+  //  InstructionQueue::enqueue(inst);
     background -> move(Vec2(direction.x * -1 * 0.05, direction.y * -1 * 0.05));
     mainRoleStatus ->setDirection(direction);
     Point temp = mainRoleStatus -> getPosition();

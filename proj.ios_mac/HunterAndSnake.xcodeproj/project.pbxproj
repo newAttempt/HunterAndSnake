@@ -17,6 +17,7 @@
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3F0253401F24251C00C6EDFB /* InstructionQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F02533E1F24251C00C6EDFB /* InstructionQueue.cpp */; };
 		3F2440C01F13447400F5C039 /* Movement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F2440BE1F13447400F5C039 /* Movement.cpp */; };
+		3F621E011F285D8A00A95FCD /* WebManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F621DFF1F285D8A00A95FCD /* WebManager.cpp */; };
 		3F885E9A1F21E934007F4719 /* HuntersSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F885E961F21E934007F4719 /* HuntersSet.cpp */; };
 		3F885E9B1F21E934007F4719 /* HunterStatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F885E981F21E934007F4719 /* HunterStatus.cpp */; };
 		3F885E9F1F21E9AD007F4719 /* ODSocket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3F885E9D1F21E9AD007F4719 /* ODSocket.cpp */; };
@@ -130,6 +131,8 @@
 		3F02533F1F24251C00C6EDFB /* InstructionQueue.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = InstructionQueue.hpp; sourceTree = "<group>"; };
 		3F2440BE1F13447400F5C039 /* Movement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Movement.cpp; sourceTree = "<group>"; };
 		3F2440BF1F13447400F5C039 /* Movement.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Movement.hpp; sourceTree = "<group>"; };
+		3F621DFF1F285D8A00A95FCD /* WebManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WebManager.cpp; sourceTree = "<group>"; };
+		3F621E001F285D8A00A95FCD /* WebManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = WebManager.hpp; sourceTree = "<group>"; };
 		3F885E961F21E934007F4719 /* HuntersSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HuntersSet.cpp; sourceTree = "<group>"; };
 		3F885E971F21E934007F4719 /* HuntersSet.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = HuntersSet.hpp; sourceTree = "<group>"; };
 		3F885E981F21E934007F4719 /* HunterStatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HunterStatus.cpp; sourceTree = "<group>"; };
@@ -363,6 +366,8 @@
 			isa = PBXGroup;
 			children = (
 				3F02533C1F2422F000C6EDFB /* BufferPool */,
+				3F621DFF1F285D8A00A95FCD /* WebManager.cpp */,
+				3F621E001F285D8A00A95FCD /* WebManager.hpp */,
 				3F2440BE1F13447400F5C039 /* Movement.cpp */,
 				3F2440BF1F13447400F5C039 /* Movement.hpp */,
 				3F885E9C1F21E93D007F4719 /* RemoteData */,
@@ -693,6 +698,7 @@
 				3F8D80771F146FB300314C0C /* ControllerForSnake.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				3F621E011F285D8A00A95FCD /* WebManager.cpp in Sources */,
 				3F885E9B1F21E934007F4719 /* HunterStatus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

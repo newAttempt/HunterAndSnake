@@ -9,6 +9,7 @@
 #include "Client.hpp"
 #include "InstructionQueue.hpp"
 #include "DataBufferPool.hpp"
+#include "Defines.h"
 USING_NS_CC;
 using namespace std;
 
@@ -40,7 +41,6 @@ bool Client::init()
         CCLOG("can not connect to server");
         return false;
     }
-    
     return true;
 }
 
@@ -50,13 +50,17 @@ void Client::receiveData()
     while (true) {
         char data[512] = "";
         int result = socket.Recv(data, 512, 0);
-        if (result <= 0) {
-            log("connection closed!");
-            //connectionStatus = false;
-            //break;
+        if(result == -1)
+        {
+            
         }
+        log("receive data: %s", data);
         string data_str(data);
-        DataBufferPool::enqueue(data_str);
+        string * str_result = NULL;
+        int max = 0;
+        split(str_result, data_str, max);
+        for(int i=0; i< max; ++i)
+            DataBufferPool::enqueue(str_result[i]);
     }
     socket.Close();
 }
@@ -64,22 +68,20 @@ void Client::receiveData()
 
 void Client::sendData()
 {
-    ///*
-    for(int i=0; i<20; ++i)
-    {
-        InstructionQueue::enqueue("0");
-    }
-     //*/
-    InstructionQueue::enqueue("2 0-14");
     while (connectionStatus) {
         string instruction = InstructionQueue::dequeue();
         if(!instruction.empty())
         {
+            log("Instruction: %s", instruction.c_str());
             instruction += "x";
             socket.Send(instruction.c_str(), instruction.length());
         }
         
     }
 }
+
+
+
+
 
 

@@ -23,9 +23,6 @@ void DataBufferPool::init()
 
 void DataBufferPool::enqueue(string data)
 {
-    log("%s", data.c_str());
-    log("%d", size[2]);
-    //return;
     char i = data[0];
     int index = i - '0';
     if(index >= DATA_TYPE_NUM || index < 0)
@@ -33,8 +30,8 @@ void DataBufferPool::enqueue(string data)
     mutex[index].lock();
     data.erase(0, 2);
     queue[index].push(data);
-    queue[index].pop();
     ++size[index];
+    log("data: %s           %d", data.c_str(), index);
     mutex[index].unlock();
 }
 
@@ -42,11 +39,12 @@ string DataBufferPool::dequeue(int data_type)
 {
     string result;
     mutex[data_type].lock();
-    if(size[data_type] != 0)
+    if(size[data_type] > 0)
     {
         result = queue[data_type].front();
+        log("result: %s", result.c_str());
         queue[data_type].pop();
-        size[data_type] = size[data_type] - 1;
+        --size[data_type];
     }else {
         result.clear();
     }

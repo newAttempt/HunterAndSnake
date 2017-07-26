@@ -19,3 +19,24 @@ void logDirection(cocos2d::Vec2 v)
 {
     cocos2d::log("dir:(%f, %f)", v.x, v.y);
 }
+
+
+void split(std::string* &arr, std::string str, int &max)
+{
+    max = 0;
+    for(int i = 0; i<str.length(); ++i)
+    {
+        if(str[i] == 'x')
+            ++max;
+    }
+    arr = new std::string[max];
+    for(int i=0, j=0; i<str.length(); ++i)
+    {
+        if(str[i] == 'x')
+        {
+            ++j;
+            continue;
+        }
+        arr[j]+= str[i];
+    }
+}

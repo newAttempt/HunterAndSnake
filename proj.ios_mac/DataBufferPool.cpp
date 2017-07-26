@@ -31,7 +31,6 @@ void DataBufferPool::enqueue(string data)
     data.erase(0, 2);
     queue[index].push(data);
     ++size[index];
-    log("data: %s           %d", data.c_str(), index);
     mutex[index].unlock();
 }
 
@@ -42,7 +41,6 @@ string DataBufferPool::dequeue(int data_type)
     if(size[data_type] > 0)
     {
         result = queue[data_type].front();
-        log("result: %s", result.c_str());
         queue[data_type].pop();
         --size[data_type];
     }else {

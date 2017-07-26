@@ -24,29 +24,51 @@ bool WebManager::init()
 void WebManager::signUpPosition(function <void (string)> idHandler, function<void ()> startHandler)
 {
     InstructionQueue::enqueue("0");
-    Director::getInstance()->getScheduler()->schedule([idHandler, this](float){
+    /*
+    Director::getInstance()->getScheduler()->schedule([startHandler, this](float){
+     
+    }, this, 0.01, kRepeatForever, 0, true, "check_start_game");
+    
+     */
+    this -> idHandler        = idHandler;
+    this -> startGameHandler = startHandler;
+    std::thread idThread = std::thread(&WebManager::checkID, this);
+    std::thread startThread = std::thread(&WebManager::checkStart, this);
+    idThread.detach();
+    startThread.detach();
+}
+
+
+void WebManager::checkID()
+{
+    while (true) {
         string temp = DataBufferPool::dequeue(0);
         if(temp.empty())
-            return;
+            continue;
         if(temp == "s")
         {
             DataBufferPool::enqueue("s");
-            return;
+            continue;
         }
         idHandler(temp);
         Director::getInstance()->getScheduler()->unschedule("check_id", this);
-    }, this, 0.01, kRepeatForever, 0, true, "check_id");
-    
-    Director::getInstance()->getScheduler()->schedule([startHandler, this](float){
+    }
+}
+
+
+void WebManager::checkStart()
+{
+    while (true) {
         string temp = DataBufferPool::dequeue(0);
         if(temp.empty())
-            return;
+            continue;
         if(temp != "s")
         {
             DataBufferPool::enqueue(temp);
-            return;
+            continue;
         }
-        startHandler;
-        Director::getInstance()->getScheduler()->unschedule("check_start_game", this);
-    }, this, 0.01, kRepeatForever, 0, true, "check_start_game");
+        startGameHandler;
+    }
 }
+
+

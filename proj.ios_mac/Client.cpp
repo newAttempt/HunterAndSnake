@@ -54,7 +54,6 @@ void Client::receiveData()
         {
             
         }
-        log("receive data: %s", data);
         string data_str(data);
         string * str_result = NULL;
         int max = 0;
@@ -72,7 +71,6 @@ void Client::sendData()
         string instruction = InstructionQueue::dequeue();
         if(!instruction.empty())
         {
-            log("Instruction: %s", instruction.c_str());
             instruction += "x";
             socket.Send(instruction.c_str(), instruction.length());
         }

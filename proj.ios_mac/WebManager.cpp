@@ -24,12 +24,6 @@ bool WebManager::init()
 void WebManager::signUpPosition(function <void (string)> idHandler, function<void ()> startHandler)
 {
     InstructionQueue::enqueue("0");
-    /*
-    Director::getInstance()->getScheduler()->schedule([startHandler, this](float){
-     
-    }, this, 0.01, kRepeatForever, 0, true, "check_start_game");
-    
-     */
     this -> idHandler        = idHandler;
     this -> startGameHandler = startHandler;
     std::thread idThread = std::thread(&WebManager::checkID, this);
@@ -47,11 +41,12 @@ void WebManager::checkID()
             continue;
         if(temp == "s")
         {
-            DataBufferPool::enqueue("s");
+            DataBufferPool::pushBack(temp, 0);
             continue;
         }
         idHandler(temp);
         Director::getInstance()->getScheduler()->unschedule("check_id", this);
+        break;
     }
 }
 
@@ -64,10 +59,11 @@ void WebManager::checkStart()
             continue;
         if(temp != "s")
         {
-            DataBufferPool::enqueue(temp);
+            DataBufferPool::pushBack(temp, 0);
             continue;
         }
-        startGameHandler;
+        startGameHandler();
+        break;
     }
 }
 

@@ -30,6 +30,18 @@ void DataBufferPool::enqueue(string data)
     mutex[index].lock();
     data.erase(0, 2);
     queue[index].push(data);
+    if(data.length() == 2)
+        return;
+    ++size[index];
+    mutex[index].unlock();
+}
+
+void DataBufferPool::pushBack(string data, int index)
+{
+    mutex[index].lock();
+    queue[index].push(data);
+    if(data.length() == 2)
+        return;
     ++size[index];
     mutex[index].unlock();
 }

@@ -57,7 +57,7 @@ void Client::receiveData()
         string data_str(data);
         string * str_result = NULL;
         int max = 0;
-        split(str_result, data_str, max);
+        split(str_result, data_str, max, 'x');
         for(int i=0; i< max; ++i)
             DataBufferPool::enqueue(str_result[i]);
     }

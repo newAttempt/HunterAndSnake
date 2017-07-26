@@ -365,7 +365,6 @@
 		3F2440B61F1336EE00F5C039 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3F02533C1F2422F000C6EDFB /* BufferPool */,
 				3F621DFF1F285D8A00A95FCD /* WebManager.cpp */,
 				3F621E001F285D8A00A95FCD /* WebManager.hpp */,
 				3F2440BE1F13447400F5C039 /* Movement.cpp */,
@@ -396,6 +395,7 @@
 		3F2440B91F1337B400F5C039 /* WebClient */ = {
 			isa = PBXGroup;
 			children = (
+				3F02533C1F2422F000C6EDFB /* BufferPool */,
 				3F885EB71F21EAF6007F4719 /* ODSocket */,
 				3F885EA51F21E9CC007F4719 /* Client.cpp */,
 				3F885EA61F21E9CC007F4719 /* Client.hpp */,

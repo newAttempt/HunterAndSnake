@@ -21,18 +21,18 @@ void logDirection(cocos2d::Vec2 v)
 }
 
 
-void split(std::string* &arr, std::string str, int &max)
+void split(std::string* &arr, std::string str, int &max, char splitC)
 {
     max = 0;
     for(int i = 0; i<str.length(); ++i)
     {
-        if(str[i] == 'x')
+        if(str[i] == splitC)
             ++max;
     }
     arr = new std::string[max];
     for(int i=0, j=0; i<str.length(); ++i)
     {
-        if(str[i] == 'x')
+        if(str[i] == splitC)
         {
             ++j;
             continue;

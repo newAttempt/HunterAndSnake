@@ -15,6 +15,7 @@ class DataBufferPool
 public:
     static void init();
     static void enqueue(std::string);
+    static void pushBack(std::string, int);
     static std::string dequeue(int);
 private:
     static std::mutex mutex[DATA_TYPE_NUM];

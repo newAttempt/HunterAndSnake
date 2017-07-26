@@ -15,6 +15,11 @@ public:
     CREATE_FUNC(WebManager);
     virtual bool init();
     void signUpPosition(std::function<void (std::string)> idHandler, std::function<void ()> startGameHandler);
+private:
+    void checkID();
+    void checkStart();
+    std::function<void (std::string)> idHandler;
+    std::function<void ()> startGameHandler;
 };
 
 #endif /* WebManager_hpp */
